@@ -9,7 +9,22 @@ function Mobile() {
 
     <Breakpoint small down>
 
-            <div>Hi, Malachi I am a Div</div>
+        <div className="MobileAppFlex">
+
+            <div className="MobileBanner">Bridgerland Park 2nd Ward</div>
+
+            <div className='MobileBgFlex'>
+
+                 <div className="MobileCard">
+                    <div>This is test text</div>    
+                </div>
+                
+            </div>
+
+               
+
+        </div>
+            
             
     </Breakpoint>
 
