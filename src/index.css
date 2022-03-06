@@ -1,6 +1,12 @@
+
+
 body{
   margin: 0px;
   padding: 0px;
+}
+
+.PageBreak{
+  margin-top: 10px;
 }
 
 /*Mobile*/
@@ -45,5 +51,46 @@ body{
   width: 95%;
   background-color: ghostwhite;
   border: thin black;
+  text-align: center;
+  border-radius: 13px;
+}
+
+.MobileCardText{
+  margin: 10px;
+}
+
+.MobileCardTextTitle{
+  margin: 10px;
+  font-size: 25px;
+}
+
+.MobileCardTextFooter{
+  font-size: 12px;
+  margin: 0px;
+  padding: 25px;
+  background-color:#f7f2f0;
+}
+
+.MobileScheduleButtonFlex{
+  height: 100%;
+  width: 100%;
+  background-color: ghostwhite;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.MobileScheduleButton{
+  align-items: center;
+  margin: 16px;
+  height: 100%;
+  width: 90%;
+  font-size: 22px;
+  background-image: linear-gradient( 150deg,
+  #5c9ab0 2%, #184668 98%
+ ); 
+ color: ghostwhite;
+ border-radius: 6px;
 
 }
+
