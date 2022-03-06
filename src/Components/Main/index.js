@@ -1,13 +1,24 @@
 import React from 'react';
+import {Breakpoint} from 'react-socks';
+import Mobile from "../Mobile";
+
 
 
 
 function Main() {
 
 
-    return(
 
-    <div>Hi, Malachi I am a Div</div>
+    return(
+    <div>
+        
+         <Mobile/>
+
+    </div>
+
+  
+
+
 
     )
 
