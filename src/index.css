@@ -53,6 +53,7 @@ body{
   border: thin black;
   text-align: center;
   border-radius: 13px;
+  box-shadow: transparent 0px 0px 0px 0px,transparent 0px 0px 0px 0px,rgba(0,0,0,.1) 0px 1px 3px 0px,rgba(0,0,0,.06) 0px 1px 2px 0px;;
 }
 
 .MobileCardText{
@@ -92,5 +93,12 @@ body{
  color: ghostwhite;
  border-radius: 16px;
 
+}
+
+
+/*this overrides the CSS for the Date Picker */
+.sdp{
+  background-color: ghostwhite !important;
+  box-shadow: none !important;
 }
 
