@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Breakpoint} from 'react-socks';
 import Footer from "../Footer";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+import DatePicker from 'sassy-datepicker';
 
 function Mobile() {
 
     const [ScheduleButton, SetScheduleButton]=React.useState(false);
 
+    const [AvailableTimes, setAvailableTimes]=useState([
+     "9:00AM","9:15AM","9:20AM","9:30AM","9:35AM","9:40AM"
+        ])
+
+    
 
     function ScheduleView (){
 
@@ -22,14 +30,21 @@ function Mobile() {
                 <div className='MobileBgFlex'>
 
                     <div className="MobileCard">
-                        <div className='MobileCardTextTitle'> Schedule an Appointment
+
+                        <div className='MobileCardTextTitle'> Please Select Date
                         </div>
 
-                        <div className='MobileCardText'>Please Select an available time
-                        </div>
+                        <DatePicker id="dateP"/>
 
-                    </div>
+                        <div className='MobileCardTextTitle'> Please Select Time
+                        </div>
                     
+                        <Dropdown placeholder="Select a Time" options={AvailableTimes} />
+                        
+                        <button className="MobileScheduleButton">Submit and Request</button>
+             
+                    </div>
+
                 </div>
             )
         }
