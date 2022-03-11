@@ -10,14 +10,19 @@ var moment = require('moment');
 function Mobile() {
 
     const [ScheduleButton, SetScheduleButton]=React.useState(false);
+    const [ShowModal, setShowModal]=useState(false)
 
     const [AvailableTimes, setAvailableTimes]=useState([
      "9:00AM","9:15AM","9:20AM","9:30AM","9:35AM","9:40AM"
         ])
 
-    const [SelectedDate, SetSelectedDate]= useState([{
-        STime: "None Selected"
-    }])
+    const [SelectedDate, SetSelectedDate]= useState([
+        {
+            SMonthAndYear: "None Selected",
+            SDay: "None Here"
+        }
+]);
+
 
     const onChange = (date) => {
         let DatePulled = date.toString();
@@ -38,25 +43,34 @@ function Mobile() {
     function SubmitClick(){
         /*Select the Dropdown Button Class because the created did not pass down a prop for it*/
         let Dbox = document.getElementsByClassName("is-selected");
-        if(Dbox == "undefined"){
-            window.alert("You must select a date")
-        };
+        
         /*Target the returned Elements, there is only one with is-selected class*/
         let Dselect =Dbox[0].innerHTML;
         /* Target the inner html at place 0 so we can see what is selected on the dropdown button*/
         /*get the Month on the datepicker*/
         let MTitle = document.getElementsByClassName("sdp--text sdp--month-name");
-        let Month =MTitle[0].innerHTML;
+        let DMonth =MTitle[0].innerHTML;
         /*get the Date on the datepicker*/
         let DDate = document.getElementsByClassName("sdp--date-btn__selected");
-        let Date = DDate[0].innerHTML;
-        console.log(Month + " " + Date);
+        let CDate = DDate[0].innerHTML;
+
+        let NewDate = DMonth + " " + CDate;
+        console.log(NewDate);
+        /*Update the State with the new date*/
+        let NewArrDate =[...SelectedDate];
+        NewArrDate.splice(0, 1, {SMonthAndYear: `${DMonth}`, SDay: `${CDate}`});
+        SetSelectedDate(NewArrDate);
+        /*remove Picker*/
+        setShowModal(true);
+       document.getElementById("TextDate").innerHTML = "";
+       document.getElementById("TextTime").InnerText = "";
 
 
-
-  
-
-
+        
+        
+        
+        
+        
     }
 
     function ScheduleView (){
@@ -73,17 +87,18 @@ function Mobile() {
             return(
                 <div className='MobileBgFlex'>
 
-                    <div className="MobileCard">
+                    <div id="DPickCard" className="MobileCard">
 
-                        <div id="test2" className='MobileCardTextTitle'> Please Select Date
+                        <div  id="TextDate" className='MobileCardTextTitle'> Please Select Date
                         </div>
 
-                        <DatePicker onChange={onChange} id="dateP"/>
-
-                        <div className='MobileCardTextTitle'> Please Select Time
+                       
+                            <DatePicker className={ShowModal ? "hide" : ""} onChange={onChange} id="dateP"/>
+                       
+                        <div id="TextTime" className='MobileCardTextTitle'> Please Select Time
                         </div>
                     
-                        <Dropdown id="test" placeholder="Select a Time" options={AvailableTimes} />
+                        <Dropdown placeholder="Select a Time" options={AvailableTimes} />
                         
                         <button onClick={SubmitClick} className="MobileScheduleButton">Submit and Request</button>
              
